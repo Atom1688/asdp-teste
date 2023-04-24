@@ -1,10 +1,3 @@
-//
-// SERVIDOR DE CONTA SIMPLES
-// Arquitetura de Sistemas Distribuídos, Paralelos e Concorrentes
-// Escola Politécnica -- PUCPR
-// Prof. Luiz Lima Jr. (laplima@ppgia.pucpr.br)
-//
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -33,7 +26,7 @@ int main(int argc, char* argv[])
 		PortableServer::POA_var root_poa;
 		CORBA::Object_ptr tmp_ref;
 		tmp_ref = orb->resolve_initial_references("RootPOA");
-		root_poa = PortableServer::POA::_narrow(tmp_ref); // safe casting
+		root_poa = PortableServer::POA::_narrow(tmp_ref);
 		PortableServer::POAManager_var poa_manager = root_poa->the_POAManager();
 		poa_manager->activate();
 
@@ -43,7 +36,7 @@ int main(int argc, char* argv[])
 
 		// 4. Registra servos no POA, criando objetos distribuídos
 		cout << "Registrando servos no POA (criando objetos CORBA)" << endl;
-		CEtcd_var account = acc_i._this(); // returns reference to the object
+		CEtcd_var account = acc_i._this(); 
 
 		// 5. Publica IOR
 		cout <<  "Publicando IOR (arquivo \"" << argv[1] << "\")" << endl;
